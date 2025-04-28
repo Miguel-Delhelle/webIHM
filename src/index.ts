@@ -13,3 +13,7 @@ app.listen(port, () => {
 app.get('/', function(req, response) {
    response.sendFile(path.join(__dirname,"..","..","html","main.html"));
 });
+
+app.get('/main.js', function(req, response) {
+   response.sendFile(path.join(__dirname,"main.js"));
+});
