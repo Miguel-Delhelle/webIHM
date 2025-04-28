@@ -1,31 +1,19 @@
 {
   "name": "webihm",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "start": "node ./build/src/index.js"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Miguel-Delhelle/webIHM.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Miguel-Delhelle/webIHM/issues"
-  },
-  "homepage": "https://github.com/Miguel-Delhelle/webIHM#readme",
   "devDependencies": {
-    "@types/express": "^5.0.1",
-    "@types/node": "^22.15.3",
-    "typescript": "^5.8.3"
+    "typescript": "~5.7.2",
+    "vite": "^6.3.1"
   },
   "dependencies": {
+    "@types/express": "^5.0.1",
     "express": "^5.1.0"
   }
 }
