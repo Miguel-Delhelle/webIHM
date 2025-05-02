@@ -6,16 +6,6 @@ const bcrypt = require("bcrypt");
 var mysql = require('mysql');
 const sqlite3 = require('sqlite3').verbose();
 
-
-// con pour connexion
-/*var con = mysql.createConnection({
-    host: "localhost",
-    user: "projetweb",
-    password: "Password1234_",
-    database: "PROJET_WEB"
-}); */
-
-//fs pour file system
 var fs = require("fs");
 const path = require("path");
 const { register } = require("module");
