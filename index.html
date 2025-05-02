@@ -22,6 +22,7 @@
   </header>
   <!-- Contains the home page sections to display the website functionalities -->
   <body class="main">
+    <div id="overlay" class="overlay"></div>
 
     <!-- Section n°1: This section allows the user to pick a color with the color picker and modify the whole website visual -->
     <section id="WebsiteCustom">
@@ -49,6 +50,13 @@
       <input type="password" id="passwordInput" rows="1" cols="30"/><br/>
       <div id="loginButton">Se Connecter</div>
     </div>
+
+    <div id="registerModal" class="modal">
+      <input type="text" id="mailInputR" rows="1" cols="30"/><br/>
+      <input type="password" id="passwordInputR" rows="1" cols="30"/><br/>
+      <div id="registerButton">S'inscrire</div>
+    </div>
+
 
     <script type="module" src="/src/main.ts"></script>
   </body>

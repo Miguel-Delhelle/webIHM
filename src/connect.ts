@@ -105,6 +105,10 @@ export function initConnectListener():void{
    let loginModal:HTMLElement = document.getElementById("connectModal")!;
    connectButton.addEventListener("click", () => initModal(loginModal));
 
+   let registerButton:HTMLElement = document.getElementById("register")!;
+   let registerModal:HTMLElement = document.getElementById("registerModal")!;
+   registerButton.addEventListener("click", () => initModal(registerModal));
+
    // Init button login
 
 
@@ -113,6 +117,17 @@ export function initConnectListener():void{
    inputConnectButton.addEventListener("click", async () => {
       let passwordValue:string = (document.getElementById("passwordInput") as HTMLInputElement).value;
       let mailValue:string = (document.getElementById("mailInput") as HTMLInputElement).value;
+      console.log (mailValue,passwordValue);
+      user = await login(mailValue,passwordValue);
+      console.log(user._id,user._mail,user._username);
+   });
+
+   let validateRegister:HTMLElement = document.getElementById("registerButton")!;
+
+   validateRegister.addEventListener("click", async () => {
+      let passwordValue:string = (document.getElementById("passwordInputR") as HTMLInputElement).value;
+      let mailValue:string = (document.getElementById("mailInputR") as HTMLInputElement).value;
+     // TO DO
       console.log (mailValue,passwordValue);
       user = await login(mailValue,passwordValue);
       console.log(user._id,user._mail,user._username);

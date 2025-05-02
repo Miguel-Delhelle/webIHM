@@ -6,18 +6,22 @@ import { startListenerWheel } from './wheel';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 `
+var overlay:HTMLElement = document.getElementById("overlay")!;
+var modals:NodeListOf<HTMLElement> = document.querySelectorAll('.modal')!;
+
+overlay.addEventListener("click", () => modals.forEach(element => {
+  closeModal(element);
+}));
 
 export function initModal(modal:HTMLElement){
-  if (modal.style.visibility = "hidden"){
     modal.style.visibility = "visible";
-  }
+    overlay.style.visibility = "visible";
 }
 
-/*function closeModal(modal:HTMLElement){
-  if (modal.style.visibility = "visible"){
-    modal.style.visibility = "hidden"
-  }
-} */
+function closeModal(modal:HTMLElement){
+    modal.style.visibility = "hidden";
+    overlay.style.visibility = "hidden";
+}
 
 initConnectListener();
 startListenerWheel();
