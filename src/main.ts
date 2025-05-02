@@ -1,3 +1,4 @@
+import { initConnectListener } from './connect';
 import './style.css'
 import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
@@ -21,3 +22,17 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </p>
   </div>
 `
+
+export function initModal(modal:HTMLElement){
+  if (modal.style.visibility = "hidden"){
+    modal.style.visibility = "visible";
+  }
+}
+
+/*function closeModal(modal:HTMLElement){
+  if (modal.style.visibility = "visible"){
+    modal.style.visibility = "hidden"
+  }
+} */
+
+initConnectListener();
