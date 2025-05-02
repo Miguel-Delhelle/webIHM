@@ -2,20 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" href="./res/img/logo/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/style.css"/>
-    <script  defer type="module" src="./src/main.ts"></script>
+    <script defer type="module" src="./src/main.ts"></script>
     <title>HvMI</title>
   </head>
-  <header class="shadow-down">
-
+  <!-- The menu to access to the different section of the website and navigate through it -->
+  <header class="menu shadow-down">
+    <a id="logo" class="hover round" href="./index.html"><img src="./res/img/logo/HvMI_Color2.png"/></a>
+    <div id="navbar-left">
+      <a class="round hover" href="#">Community</a>
+      <a class="round hover" href="#">Articles</a>
+      <a class="round hover" href="#">Exercises</a>
+    </div>
+    <div id="navbar-right">
+      <a class="round hover" href="#">Subscribe</a>
+      <a class="round hover" href="#">Login</a>
+    </div>
   </header>
-  <body>
-    <a class="round button hover" href="#">Click on me!</a>
-    <a class="round button hover" href="#">Pick me up!!</a>
+  <!-- Contains the home page sections to display the website functionalities -->
+  <body class="main">
+    <!-- Section n°1: This section allows the user to pick a color with the color picker and modify the whole website visual -->
+    <section id="WebsiteCustom">
+      <!-- Hemisphere Toggle Button -->
+      <div id="hemisphere-toggle"></div>
+      <!-- Expanding Color Wheel Container -->
+      <div id="wheel-container">
+        <svg id="color-wheel" viewBox="0 0 400 400"></svg>
+      </div>
+      <script defer type="module" src="./src/wheel.ts"></script>
+    </section>
+    <!-- Section n°2: This section represents the HMI timeline with dynamic animations -->
+    <section id="TimeLine"></section>
+    <!-- Section n°3: This section shows the most recent posts published on the forum in a dynamic carrousel -->
+    <section id="ForumActivity"></section>
+    <!-- Section n°4: This section show random website project previews to give few example of beautiful websites
+                      It's represented by the logo linked to few preview in a 3D planet preview -->
+    <section id="WebProjects"></section>
   </body>
-  <footer>
-
+  <!-- It should contains all the differents sections like Contact Us, Our Policy, ... -->
+  <footer class="menu">
   </footer>
 </html>
