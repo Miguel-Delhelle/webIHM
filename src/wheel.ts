@@ -6,20 +6,26 @@ const FAMILY_ORDER: {[k: string]: CopicColor[]} = {};
 let maxColorSegment: number = 0;
 let isExpanded: boolean = false;
 
-toggle.addEventListener("click", (e) => {
-  e.stopPropagation();
-  toggleColorWheel();
-});
+export function startListenerWheel(){
 
-container.addEventListener("click", (e) => {
-  e.stopPropagation();
-  toggleColorWheel(false);
-})
-document.addEventListener("click", () => {
-  if(isExpanded) toggleColorWheel(false);
-});
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleColorWheel();
+  });
+  
+  container.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleColorWheel(false);
+  })
+  document.addEventListener("click", () => {
+    if(isExpanded) toggleColorWheel(false);
+  });
+  
+  drawCopicWheel(200,150);
 
-drawCopicWheel(200,150);
+}
+
+
 /*
 // Draw dummy swatches
 const centerX: number = 200;

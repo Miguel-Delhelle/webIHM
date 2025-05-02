@@ -1,7 +1,6 @@
 import { initConnectListener } from './connect';
 import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
+import { startListenerWheel } from './wheel';
 
 // VITE
 
@@ -21,3 +20,4 @@ export function initModal(modal:HTMLElement){
 } */
 
 initConnectListener();
+startListenerWheel();

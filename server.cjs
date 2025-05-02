@@ -104,5 +104,8 @@ app.use('/:nom', function(req, response) {
 app.get('/assets/:nom', function(req, response) {
   response.sendFile(path.resolve('.','dist','assets',req.params.nom));
 });
+app.get('/data/:nom', function(req, response) {
+  response.sendFile(path.resolve('.','dist','data',req.params.nom));
+});
 
 
