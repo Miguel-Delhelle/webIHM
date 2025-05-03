@@ -1,10 +1,9 @@
 const cors = require("cors");
 var express = require("express");
-const url = require('url');
-const querystring = require('querystring');
 const bcrypt = require("bcrypt");
-var mysql = require('mysql');
 const sqlite3 = require('sqlite3').verbose();
+const fetch = require("node-fetch");
+const { parseStringPromise } = require("xml2js");
 
 var fs = require("fs");
 const path = require("path");
@@ -93,6 +92,40 @@ async function verifyPassword(clearPassword, hashedPassword) {
   }
 }
 
+const rssUrls = [
+  "https://calderon.hypotheses.org/feed",
+  "https://socioargu.hypotheses.org/feed",
+  "https://anthropo-ihm.hypotheses.org/feed"
+];
+
+app.get("/api/rss", async (req, response) => {
+  const results = [];
+
+  for (const url of rssUrls) {
+    try {
+      const xml = await fetch(url).then(r => r.text());
+      const parsed = await parseStringPromise(xml);
+      const channel = parsed.rss.channel[0];
+
+      const items = channel.item.slice(0, 5).map((item) => ({
+        title: item.title[0],
+        link: item.link[0],
+        date: item.pubDate?.[0] ?? null
+      }));
+
+      results.push({
+        source: channel.title[0],
+        articles: items
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  response.json(results);
+});
+
+
 app.get('/', function(req, response) {
   response.sendFile(path.resolve('.','dist','index.html'));
 });
@@ -107,5 +140,9 @@ app.get('/assets/:nom', function(req, response) {
 app.get('/data/:nom', function(req, response) {
   response.sendFile(path.resolve('.','dist','data',req.params.nom));
 });
+
+
+// FLux RSS
+
 
 

@@ -143,10 +143,7 @@ body {
   color: var(--clr-secondary);
 }
 
-section {
-  height: 800px;
-  box-shadow: 0px 0px 30px 50px var(--clr-secondaryDark500);
-}
+
 
 footer {
   position: relative;
@@ -292,4 +289,127 @@ a:focus:hover:active {
   z-index: 99; /* S'assure que l'overlay est derrière la modale */
   visibility: hidden;
   backdrop-filter: blur(2.5px);
+}
+
+.invisible{
+  display: none;
+}
+
+section {
+  height: 800px;
+  box-shadow: 0px 0px 30px 50px var(--clr-secondaryDark500);
+}
+.timeline-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 2rem 0;
+}
+
+.timeline {
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+  min-width: max-content;
+}
+
+.timeline-item {
+  background: #fff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  min-width: 200px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -1rem;
+  width: 1rem;
+  height: 2px;
+  background: #888;
+}
+
+.timeline-item:first-child::before {
+  content: none;
+}
+
+.timeline-content h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.timeline-content p {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  color: #666;
+}
+.timeline-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 2rem 1rem;
+  overflow-x: auto;
+}
+
+.timeline-arrow {
+  position: relative;
+  height: 4px;
+  background-color: #666;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.timeline-arrow::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -6px;
+  border: 10px solid transparent;
+  border-left-color: #666;
+}
+
+.timeline-nodes {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 1.7rem;
+  left: 0;
+  right: 0;
+  padding: 0 1rem;
+}
+
+.timeline-node {
+  position: relative;
+  background-color: white;
+  border: 2px solid #888;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 2;
+}
+
+.timeline-node:hover {
+  background-color: #f0f0f0;
+}
+
+.timeline-details {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  max-width: 600px;
+}
+
+.timeline-details.hidden {
+  display: none;
 }
