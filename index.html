@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="./src/style.css"/>
     <title>HvMI</title>
   </head>
-   
+  
+  <body class="main">
+
   <header class="menu shadow-down">
     <a id="logo" class="hover round" href="#"><img src="./res/img/logo/HvMI_Color2.png"/></a>
     <div id="navbar-left">
@@ -18,19 +20,15 @@
       <a class="round hover" href="#" id="register">Inscription</a>
       <a class="round hover" href="#" id="connect">Connexion</a>
     </div>
-  </header>
+  </header><br/><br/>
 
-  <body class="main">
     <div id="overlay" class="overlay"></div>
 
     <div id="Accueil" class="mainPage">
       <section id="TimeLine">
         <div class="timeline-container">
           <div class="timeline">
-            <div id="timeline-details" class="timeline-details invisible">
-              <h3 id="details-title"></h3>
-              <p id="details-content"></p>
-            </div>
+
           </div>
         </div>      
         <div class="timeline-wrapper">
@@ -40,6 +38,10 @@
             <div class="timeline-node" data-year="2021">2021</div>
             <div class="timeline-node" data-year="2022">2022</div>
             <div class="timeline-node" data-year="2023">2023</div>
+          </div>
+          <div id="timeline-details" class="timeline-details invisible">
+            <h3 id="details-title"></h3>
+            <p id="details-content"></p>
           </div>
         </div>   
       </section>
