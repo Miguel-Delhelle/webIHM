@@ -93,8 +93,8 @@ async function verifyPassword(clearPassword, hashedPassword) {
 }
 
 const rssUrls = [
-  "https://calderon.hypotheses.org/feed",
-  "https://socioargu.hypotheses.org/feed",
+  //"https://calderon.hypotheses.org/feed",
+  //"https://socioargu.hypotheses.org/feed",
   "https://anthropo-ihm.hypotheses.org/feed"
 ];
 
@@ -140,9 +140,5 @@ app.get('/assets/:nom', function(req, response) {
 app.get('/data/:nom', function(req, response) {
   response.sendFile(path.resolve('.','dist','data',req.params.nom));
 });
-
-
-// FLux RSS
-
 
 
