@@ -1,11 +1,23 @@
 import { initConnectListener } from './connect';
 import './style.css'
-import { startListenerWheel } from './wheel';
+import { drawCopicColorWheel } from './Section1_ColorWheel';
+import { Point } from './Point';
+//import { startListenerWheel } from './wheel';
 
 // VITE
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-`
+document.querySelector<HTMLDivElement>('#app')!.innerHTML = ``
+
+var cssRoot = document.querySelector(':root')! as HTMLElement;
+
+export function getCSSproperty(propertyName: string): string {
+  var rs = getComputedStyle(cssRoot);
+  return rs.getPropertyValue(propertyName);
+}
+
+export function setCSSProperty(propertyName: string, value: string): void {
+  cssRoot.style.setProperty(propertyName, value);
+}
 
 export function initModal(modal:HTMLElement){
   if (modal.style.visibility = "hidden"){
@@ -20,4 +32,6 @@ export function initModal(modal:HTMLElement){
 } */
 
 initConnectListener();
-startListenerWheel();
+drawCopicColorWheel(new Point(500,500), 80, 20);
+//drawCopicColorWheel(new Point(0,parseInt(getCSSproperty('--eth-header').replace(/\D/g,""))), 80, 30);
+//startListenerWheel();

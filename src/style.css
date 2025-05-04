@@ -204,8 +204,8 @@ a:focus:hover:active {
 /* Color wheel container */
 #wheel-container {
   position: absolute;
-  top: var(--eth-header);
-  left: 20px;
+  /*top: var(--eth-header);
+  left: 20px;*/
   opacity: 0;
   transform: translate(-50%, -50%) scale(0);
   width: 50vw;
@@ -269,4 +269,12 @@ a:focus:hover:active {
   width: 400px ;
   height: 600px;
   visibility: hidden;
+}
+
+.scale {
+  transition: transform 0.1 ease;
+}
+.scale:hover {
+  stroke: black;
+  stroke-width: 1px;
 }

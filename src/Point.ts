@@ -2,7 +2,7 @@ export class Point {
   private x: number;
   private y: number;
 
-  constructor(x: number, y: number) {
+  constructor(x: number = 0.0, y: number = 0.0) {
      this.x = x;
      this.y = y;
   }
@@ -34,6 +34,20 @@ export class Point {
 
   public angleFrom(that: Point): number {
     return Math.atan(this.dYto(that)/this.dXto(that));
+  }
+
+  public polarPt(distance: number, angleRad: number): Point {
+    return new Point(
+      this.x + distance * Math.cos(angleRad),
+      this.y + distance * Math.sin(angleRad)
+    )
+  }
+
+  public relativePt(dX: number, dY: number): Point {
+    return new Point(
+      this.x + dX,
+      this.y + dY
+    );
   }
 
 }
