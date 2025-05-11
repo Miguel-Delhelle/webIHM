@@ -1,3 +1,4 @@
+import { setCSSProperty } from "./main";
 import { Point } from "./Point";
 
 interface CopicColor {
@@ -95,6 +96,8 @@ export async function drawCopicColorWheel(
     container.classList.toggle("expanded", isExpanded);
   }
 
+  setCSSProperty('--cw-x', `${svgTopLeftCorner._x}px`);
+  setCSSProperty('--cw-y', `${svgTopLeftCorner._y}px`);
   const container = document.getElementById("wheel-container") as HTMLDivElement;
   var svg = document.getElementById("color-wheel") as SVGSVGElement|null;
   if (!svg) {
@@ -105,11 +108,8 @@ export async function drawCopicColorWheel(
   const maxRadius: number = cwRadius+cwTileWidth*cwTilenumber;
   const cwCenterPt: Point = new Point();
   svg.setAttribute("viewBox", `${cwCenterPt._x-maxRadius} ${cwCenterPt._y-maxRadius} ${maxRadius*2} ${maxRadius*2}`);
-  //svg.setAttribute("viewBox", `${svgTopLeftCorner._x} ${svgTopLeftCorner._y} ${maxRadius*2} ${maxRadius*2}`);
-  svg.setAttribute("left", `${svgTopLeftCorner._x}`);
-  svg.setAttribute("top", `${svgTopLeftCorner._y}`);
-  //svg.setAttribute("viewBox", `0 0 ${maxRadius*2} ${maxRadius*2}`);
   svg.innerHTML = '';
+  const cw: SVGElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
   const toggle = document.getElementById("hemisphere-toggle") as HTMLDivElement;
   let isExpanded: boolean = false;
 

@@ -134,6 +134,7 @@ header {
   background-color: var(--clr-secondary);
   color: var(--clr-primary);
   z-index: 1000;
+  visibility: hidden;
 }
 
 body {
@@ -204,8 +205,9 @@ a:focus:hover:active {
 /* Color wheel container */
 #wheel-container {
   position: absolute;
-  /*top: var(--eth-header);
-  left: 20px;*/
+  top: var(--cw-y);
+  left: var(--cw-x);
+  background-color: #222;
   opacity: 0;
   transform: translate(-50%, -50%) scale(0);
   width: 50vw;

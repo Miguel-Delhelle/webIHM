@@ -32,6 +32,6 @@ export function initModal(modal:HTMLElement){
 } */
 
 initConnectListener();
-drawCopicColorWheel(new Point(500,500), 80, 20);
+drawCopicColorWheel(new Point(600,350), 30, 10);
 //drawCopicColorWheel(new Point(0,parseInt(getCSSproperty('--eth-header').replace(/\D/g,""))), 80, 30);
 //startListenerWheel();
