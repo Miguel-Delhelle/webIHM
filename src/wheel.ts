@@ -16,8 +16,8 @@ export function startListenerWheel() {
 
   const toggle = document.getElementById("hemisphere-toggle") as HTMLDivElement;
   const container = document.getElementById("wheel-container") as HTMLDivElement;
-  const svg = document.getElementById("color-wheel") as SVGSVGElement|null;
-  if (!svg) throw new Error("SVG Element #color-wheel not found");
+  const svg = document.getElementById("wheel-svg") as SVGSVGElement|null;
+  if (!svg) throw new Error("SVG Element #wheel-svg not found");
 
   const FAMILY_ORDER: {[k: string]: CopicColor[]} = {};
   let maxColorSegment: number = 0;
@@ -81,7 +81,7 @@ export function startListenerWheel() {
   }
 
   async function drawCopicWheel(center: Point, radius: number): Promise<void> {
-    if (!svg) throw new Error("SVG Element #color-wheel not found");
+    if (!svg) throw new Error("SVG Element #wheel-svg not found");
     svg.innerHTML = "";
     groupAndSortColors(await loadCopicColors());
     console.log(FAMILY_ORDER);
