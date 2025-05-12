@@ -27,10 +27,12 @@
   /* -------------------------------------[ 'clr' -> Color ]------------------------------------ */
   /*--clr-:; /* expected value -> ColorName, rgb(), rgba() gradient(), ... */
   --clr-hue: 300;
+  --clr-sat: 25%;
+  --clr-lum: 95%;
   --clr-hueComplement: calc(var(--clr-hue) + 180);
   --clr-hueRightAnalogous: calc(var(--clr-hue) + 30);
   --clr-hueLeftAnalogous: calc(var(--clr-hue) - 30);
-  --clr-primary: hsl(var(--clr-hue) 25% 95%);
+  --clr-primary: hsl(var(--clr-hue) var(--clr-sat) var(--clr-lum));
   --clr-primaryDark500: hsl(var(--clr-hue) 20% 85%);
   --clr-primaryDark600: hsl(var(--clr-hue) 20% 75%);
   --clr-secondary: hsl(var(--clr-hueComplement) 5% 25%);
@@ -127,8 +129,6 @@ header {
 body {
   font-family: sans-serif;
   overflow-x: hidden;
-  background-color: var(--clr-primary);
-  color: var(--clr-secondary);
 }
 
 section {
@@ -200,7 +200,7 @@ a:focus:hover:active {
   height: 50vw;
   overflow: visible;
   pointer-events: none;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.4s ease, opacity 0.3s ease;
 }
 
 #wheel-container.expanded {
@@ -215,8 +215,12 @@ a:focus:hover:active {
   height: 100%;
 }
 
+#color-wheel {
+  filter: drop-shadow(0 0 80px hsl(var(--clr-hue) 75% 20%));
+}
+
 .main {
-  background-color: var(--bgc-main);
+  background-color: rgb(23,23,23);
   color: var(--ftc-main);
 }
 
@@ -259,12 +263,18 @@ a:focus:hover:active {
   visibility: hidden;
 }
 
-.scale {
-  transition: transform 0.1 ease;
+.cw-tile:hover {
+  stroke: white;
+  stroke-width: 0.1;
+  filter: drop-shadow(0 0 0.8px black);
+  cursor: pointer;
+  transition: filter 0.1 ease;
 }
-.scale:hover {
-  stroke: black;
-  stroke-width: 0.5px;
+
+.cw-tile.active {
+  stroke: white;
+  stroke-width: 0.2;
+  box-shadow: -1px -1px 8px 10px white;
 }
 
 .cw-label {

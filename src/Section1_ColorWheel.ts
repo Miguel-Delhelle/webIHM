@@ -25,6 +25,7 @@ let lastTimestamp: number = 0;      // Timestamp of last mousemove
 let movedEnoughToDrag: boolean = false;
 let dragThreshold: number = 5; // Minimum pixels to consider as a drag
 let initialDragPt: DOMPoint | null = null;
+let lastColorPicked: SVGPathElement|null = null;
 
 const toggle = document.getElementById("hemisphere-toggle") as HTMLDivElement;
 const container = document.getElementById("wheel-container") as HTMLDivElement;
@@ -68,34 +69,7 @@ async function initCopicColors(): Promise<number> {
   groupAndSortColors(await loadCopicColors());
   return maxColorSegment;
 }
-/*
-function RGBtoHSL(rgb: RGBcolor): HSLcolor {
-  var r: number = rgb.R;
-  var g: number = rgb.G;
-  var b: number = rgb.B;
-  r /= 255, g /= 255, b /= 255;
-  var max: number = Math.max(r,g,b);
-  var min: number = Math.min(r,g,b);
-  var h: number = (max+min)/2;
-  var s: number = (max+min)/2;
-  var l: number = (max+min)/2;
 
-  if(max == min) {
-    h = s = 0; // achromatic
-  } else {
-    var d: number = max - min;
-    s = l>0.5?d/(2-max-min):d/(max+min);
-    switch(max) {
-      case r: h = (g-b)/d+(g<b?6:0); break;
-      case g: h = (b-r)/d+2; break;
-      case b: h = (r-g)/d+4; break;
-    }
-    h /= 6;
-  }
-
-  return {H: h, S: s, L: l};
-}
-*/
 /**
  * Converts an RGB color to HSL.
  * @param rgb Object with r, g, b components (0–255).
@@ -152,7 +126,8 @@ function HEXtoRGB(hex: string): RGBcolor {
 export async function drawCopicColorWheel(
   svgTopLeftCorner: Point, 
   cwRadius: number, 
-  cwTileWidth: number, 
+  cwTileWidth: number,
+  cwTileSpacing: number = 0,
   cwTilenumber: number = maxColorSegment
 ): Promise<void> {
 
@@ -160,8 +135,8 @@ export async function drawCopicColorWheel(
 
     function createCCWTile(color: CopicColor, i: number): SVGElement {
       const angMid: number = (angStart+angEnd)/2;
-      const srad: number = cwRadius+cwTileWidth*i;
-      const erad: number = cwRadius+cwTileWidth*(i+1);
+      const srad: number = cwRadius+cwTileWidth*i+cwTileSpacing;
+      const erad: number = cwRadius+cwTileWidth*(i+1)-cwTileSpacing;
       const trad: number = (srad+erad)/2;
       const ptA_0: Point = cwCenterPt.polarPt(srad,angStart);
       const ptA_1: Point = cwCenterPt.polarPt(erad,angStart);
@@ -191,7 +166,7 @@ export async function drawCopicColorWheel(
       label.classList.add("cw-label");
       label.setAttribute("alignment-baseline", "middle");
       label.setAttribute("transform", `rotate(${angMid*(180/Math.PI)} ${ptT._x} ${ptT._y})`);
-      label.setAttribute("font-size", `${cwTileWidth*0.1}px`);
+      label.setAttribute("font-size", `${(cwTileWidth+i)*0.08}px`);
       label.setAttribute("fill", "#000"); // Black text for visibility
 
       const tspanCode = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
@@ -243,8 +218,8 @@ export async function drawCopicColorWheel(
   console.log(ccf);
   
   ccf.forEach((f, i) => {
-    const fsStartAngle: number = i * cwAngle;
-    const fsEndAngle: number = (i+1) * cwAngle;
+    const fsStartAngle: number = i*cwAngle+(cwTileSpacing*Math.PI/180);
+    const fsEndAngle: number = (i+1)*cwAngle-(cwTileSpacing*Math.PI/180);
     const familySegment: SVGElement = createCCWfamilySegment(fsStartAngle,fsEndAngle,COPICCOLOR_FAMILIES[f]);
     cw.appendChild(familySegment);
   });
@@ -256,7 +231,6 @@ export async function drawCopicColorWheel(
   
   function startDrag(e: MouseEvent): void {
     if (!svg) return;
-  
     isDragging = true;
     movedEnoughToDrag = false;
     initialDragPt = svg.createSVGPoint();
@@ -308,7 +282,7 @@ export async function drawCopicColorWheel(
       animateInertia(); // Only rotate if user actually dragged
     } else if(target instanceof SVGPathElement) {
       handleColorPick(target as SVGPathElement); // Treat as a click to pick a color
-      toggleColorWheel(false);
+      //toggleColorWheel(false);
     }
   
     initialDragPt = null;
@@ -334,17 +308,19 @@ export async function drawCopicColorWheel(
   }
 
   function handleColorPick(node: SVGPathElement): void {
+    if (lastColorPicked) lastColorPicked.classList.remove('active');
     const hex: string|null = node.getAttribute('fill');       // hex code
     const name: string|null = node.getAttribute('data-name'); // color name
     const code: string|null = node.getAttribute('data-code'); // color copic code
     if(!hex || !name || !code) return;
     const rgb: RGBcolor = HEXtoRGB(hex);
     const hsl: HSLcolor = RGBtoHSL(rgb);
-    const hue: number = hsl.H;
-    setCSSProperty('--clr-hue',hue.toString());
-    console.log(`CW - Picked color : ${hex}\n  ${name} (${code})\n  -> HUE: ${hue}`);
-    console.log(rgb);
-    console.log(hsl);
+    setCSSProperty('--clr-hue',hsl.H.toString());
+    setCSSProperty('--clr-sat',hsl.S.toString()+'%');
+    setCSSProperty('--clr-lum',hsl.L.toString()+'%');
+    console.log(`CW - Picked color : ${hex}\n  ${name} (${code})\n  -> RGB: `,rgb,`\n  -> HSL: `,hsl);
+    lastColorPicked = node;
+    node.classList.add('active');
   }
   
   document.addEventListener("mousedown", (e) => {
