@@ -363,7 +363,7 @@ async function initializeAppAndColorWheel() {
         console.log("main.ts: Copic colors initialized via promise, maxColorSegment:", resolvedMaxSegment);
 
         // Pas besoin d'attendre DOMContentLoaded ici si cette fonction est appelée DANS DOMContentLoaded
-        drawCopicColorWheel(new Point(0, 100), 30, 10, 0.1, resolvedMaxSegment);
+        drawCopicColorWheel(new Point(0,0), 30, 10, 0.1, resolvedMaxSegment);
         console.log("main.ts: drawCopicColorWheel has been called successfully.");
 
     } catch (error) {
