@@ -65,7 +65,7 @@
     /*--fte-:; /* expected value -> font-weight, etc... */
     /* --------------------------------[ 'eth' -> ElemenT Height ]-------------------------------- */
     /*--eth-:; /* expected value -> Integer or Float (px, %, rem, ...) */
-    --eth-header: 0px;
+    --eth-header: 2px;
     --eth-footer: 300px;
     /* ---------------------------------[ 'etw' -> ElemenT Width ]-------------------------------- */
     /*--etw-:; /* expected value -> Integer or Float (px, %, rem, ...) */
