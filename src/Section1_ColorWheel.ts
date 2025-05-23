@@ -1,5 +1,15 @@
-import { setCSSProperty } from "./main";
 import { Point } from "./Point";
+
+var cssRoot = document.querySelector(':root') as HTMLElement;
+
+function getCSSproperty(propertyName: string): string {
+  var rs = getComputedStyle(cssRoot);
+  return rs.getPropertyValue(propertyName);
+}
+
+function setCSSProperty(propertyName: string, value: string): void {
+  cssRoot.style.setProperty(propertyName, value);
+}
 
 interface CopicColor {
   name: string,

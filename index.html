@@ -1,58 +1,290 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="./res/img/logo/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/style.css"/>
-    <title>HvMI</title>
-  </head>
-  <!-- The menu to access to the different section of the website and navigate through it -->
-  <header class="menu shadow-down">
-    <a id="logo" class="hover round" href="./index.html"><img src="./res/img/logo/HvMI_Color2.png"/></a>
-    <div id="navbar-left">
-      <a class="round hover" href="#">Community</a>
-      <a class="round hover" href="#">Articles</a>
-      <a class="round hover" href="#">Exercises</a>
-    </div>
-    <div id="navbar-right">
-      <a class="round hover" href="#" id="register">Register</a>
-      <a class="round hover" href="#" id="connect">Login</a>
-    </div>
-  </header>
-  <!-- Contains the home page sections to display the website functionalities -->
-  <body class="main">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactions Homme-Machine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./src/main.css">
+    <!--<link rel="stylesheet" href="./src/style.css"> -->
+    <script defer src="./src/main.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">IHM Hub</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#timeline">Timeline</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#forum">Forum</a></li>
+                <li><a href="#ressources">Ressources</a></li>
+            </ul>
+            <div id="auth-buttons" class="auth-buttons">
+                <button class="btn btn-secondary" id="loginButton">Connexion</button>
+                <button class="btn btn-primary" id="registerButton">Inscription</button>
+            </div>
+            <div id="user-menu" style="display: none;">
+                <button id="user-button" class="user-button">
+                    <span id="user-name"></span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-menu">
+                    <button id="logout-button" class="dropdown-item">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Déconnexion
+                    </button>
+                </div>
+            </div>
+        </nav>
+                  
+    </header>
 
-    <!-- Section n°1: This section allows the user to pick a color with the color picker and modify the whole website visual -->
-    <section id="WebsiteCustom">
-      <!-- Hemisphere Toggle Button -->
-      <div id="hemisphere-toggle"></div>
-      <!-- Expanding Color Wheel Container -->
-      <div id="wheel-container">
-        <svg id="wheel-svg" viewBox="0 0 400 400"></svg>
-      </div>
-      <script defer type="module" src="./src/wheel.ts"></script>
-    </section>
-    <!-- Section n°2: This section represents the HMI timeline with dynamic animations -->
-    <section id="TimeLine"></section>
-    <!-- Section n°3: This section shows the most recent posts published on the forum in a dynamic carrousel -->
-    <section id="ForumActivity"></section>
-    <!-- Section n°4: This section show random website project previews to give few example of beautiful websites
-                      It's represented by the logo linked to few preview in a 3D planet preview -->
-    <section id="WebProjects"></section>
-  <body>
-    <div id="app"></div>
-    <!-- HTML -->
-     
-    <div id="connectModal" class="modal">
-      <input type="text" id="mailInput" rows="1" cols="30"/><br/>
-      <input type="password" id="passwordInput" rows="1" cols="30"/><br/>
-      <div id="loginButton">Se Connecter</div>
+    <main>
+        <!-- Hemisphere Toggle Button -->
+        <div id="hemisphere-toggle"></div>
+        <!-- Expanding Color Wheel Container -->
+        <div id="wheel-container">
+            <svg id="wheel-svg" viewBox="0 0 400 400"></svg>
+        </div>
+        <div id="main-content">
+            <section id="accueil" class="hero">
+                <div class="container">
+                    <h1>Interactions Homme-Machine</h1>
+                    <p>Explorez l'évolution fascinante des interfaces utilisateur et découvrez comment la technologie transforme nos interactions quotidiennes</p>
+                    <a href="#timeline" class="btn btn-primary">Découvrir l'histoire</a>
+                </div>
+            </section>
+
+            <section id="timeline" class="section">
+                <div class="container">
+                    <h2 style="text-align: center; margin-bottom: 3rem; color: #667eea; font-size: 2.5rem;">Timeline des IHM</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">1945</div>
+                            <div class="timeline-title">Memex de Vannevar Bush</div>
+                            <div class="timeline-content">Première conceptualisation d'un système d'information interactif, précurseur de l'hypertexte et du web.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1962</div>
+                            <div class="timeline-title">Sketchpad d'Ivan Sutherland</div>
+                            <div class="timeline-content">Premier système graphique interactif utilisant un stylo optique, révolutionnant les interfaces graphiques.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1968</div>
+                            <div class="timeline-title">La Mère de toutes les démos</div>
+                            <div class="timeline-content">Douglas Engelbart présente la souris, l'hypertexte et la visioconférence lors d'une démonstration historique.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1973</div>
+                            <div class="timeline-title">Xerox Alto</div>
+                            <div class="timeline-content">Premier ordinateur avec interface graphique utilisateur moderne, précurseur du Macintosh et de Windows.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">1984</div>
+                            <div class="timeline-title">Apple Macintosh</div>
+                            <div class="timeline-content">Démocratisation de l'interface graphique avec fenêtres, icônes, menus et pointeur (WIMP).</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2007</div>
+                            <div class="timeline-title">iPhone</div>
+                            <div class="timeline-content">Révolution des interfaces tactiles multi-touch, redéfinissant l'interaction mobile.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">2020s</div>
+                            <div class="timeline-title">IA Conversationnelle</div>
+                            <div class="timeline-content">Émergence des assistants IA avancés transformant l'interaction humain-machine par le langage naturel.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="articles" class="section">
+                <div class="container">
+                    <h2 style="text-align: center; margin-bottom: 3rem; color: #667eea; font-size: 2.5rem;">Derniers Articles</h2>
+                    <div class="rss-feed-container">
+                        <!-- Les flux RSS seront chargés dynamiquement ici -->
+                    </div>
+                </div>
+            </section>
+
+    <div id="sidebar" class="sidebar">
+        <button id="toggleSidebar" class="toggle-sidebar">
+            <i class="fas fa-book"></i>
+        </button>
+        <div class="sidebar-content">
+        </br></br></br>
+            <h2>Ressources</h2>
+            <div class="search-resources">
+                <div class="search-input">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="resourceSearch" placeholder="Rechercher une ressource...">
+                </div>
+            </div>
+            <div class="resources-list">
+                <div class="resource-item">
+                    <h3>🔧 Outils de design</h3>
+                    <ul>
+                        <li><a href="https://www.figma.com" target="_blank">Figma</a> - Design collaboratif et prototypage</li>
+                        <li><a href="https://balsamiq.com" target="_blank">Balsamiq</a> - Wireframing et maquettes</li>
+                        <li><a href="https://www.sketch.com" target="_blank">Sketch</a> - Design d'interface professionnel</li>
+                        <li><a href="https://www.adobe.com/products/xd.html" target="_blank">Adobe XD</a> - Prototypage et design UI/UX</li>
+                    </ul>
+                </div>
+                <div class="resource-item">
+                    <h3>⚛️ Librairies JavaScript</h3>
+                    <ul>
+                        <li><a href="https://reactjs.org" target="_blank">React</a> - Bibliothèque UI déclarative</li>
+                        <li><a href="https://phaser.io" target="_blank">Phaser.js</a> - Framework de jeux HTML5</li>
+                        <li><a href="https://threejs.org" target="_blank">Three.js</a> - Bibliothèque 3D WebGL</li>
+                        <li><a href="https://d3js.org" target="_blank">D3.js</a> - Visualisation de données</li>
+                    </ul>
+                </div>
+                <div class="resource-item">
+                    <h3>☕ Librairies Java</h3>
+                    <ul>
+                        <li><a href="https://docs.oracle.com/javase/tutorial/uiswing/" target="_blank">Swing</a> - GUI toolkit classique</li>
+                        <li><a href="https://openjfx.io" target="_blank">JavaFX</a> - Framework UI moderne</li>
+                        <li><a href="https://www.eclipse.org/swt/" target="_blank">SWT</a> - Standard Widget Toolkit</li>
+                        <li><a href="https://docs.oracle.com/javase/8/docs/api/java/awt/package-summary.html" target="_blank">AWT</a> - Abstract Window Toolkit</li>
+                    </ul>
+                </div>
+                <div class="resource-item">
+                    <h3>📚 Livres IHM</h3>
+                    <ul>
+                        <li><a href="https://www.amazon.fr/Design-Everyday-Things-Donald-Norman/dp/0465050654" target="_blank">"The Design of Everyday Things"</a> - Don Norman</li>
+                        <li><a href="https://www.amazon.fr/Dont-Make-Think-Revisited-Usability/dp/0321965515" target="_blank">"Don't Make Me Think"</a> - Steve Krug</li>
+                        <li><a href="https://www.amazon.fr/Universal-Principles-Design-William-Lidwell/dp/1592530079" target="_blank">"Universal Principles of Design"</a> - William Lidwell</li>
+                        <li><a href="https://www.amazon.fr/About-Face-Essentials-Interaction-Design/dp/1118766571" target="_blank">"About Face"</a> - Alan Cooper</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+
+        <div id="forum-content" style="display: none;">
+            <div class="forum-header">
+                <div class="container">
+                    <div class="forum-header-content">
+                        <button class="btn btn-primary" onclick="toggleView('main')">
+                            <i class="fas fa-home"></i> Retour à l'accueil
+                        </button>
+                        <h2 style="text-align: center; margin-bottom: 3rem; color: #ffffff; font-size: 2.5rem;">Forum IHM</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                
+                <!-- Bouton pour créer un nouveau sujet (visible uniquement si connecté) -->
+                <div id="newTopicButton" style="text-align: right; margin-bottom: 2rem; display: none;">
+                    <button class="btn btn-primary" id="createTopicButton">
+                        <i class="fas fa-plus"></i> Nouveau sujet
+                    </button>
+                </div>
+
+                <!-- Zone de contenu du forum -->
+                <div class="forum-layout">
+                    <!-- Liste des sujets -->
+                    <div class="forum-topics" id="forumTopicsList">
+                        <div class="forum-container" id="topicsList">
+                            <!-- Les sujets seront chargés dynamiquement ici -->
+                        </div>
+                    </div>
+
+                    <!-- Vue détaillée d'un sujet -->
+                    <div class="forum-topic-details" id="forumTopicDetails" style="display: none;">
+                        <div class="topic-header-actions">
+                            <button class="btn btn-secondary" onclick="showTopicsList()">
+                                <i class="fas fa-arrow-left"></i> Retour à la liste
+                            </button>
+                        </div>
+                        <div id="topicContent">
+                            <!-- Le contenu du sujet sera chargé ici -->
+                        </div>
+                        <div id="topicReplies">
+                            <!-- Les réponses seront chargées ici -->
+                        </div>
+                        <div id="replyForm" style="margin-top: 2rem; display: none;">
+                            <h3>Répondre</h3>
+                            <form id="newReplyForm">
+                                <div class="form-group">
+                                    <textarea id="replyContent" required rows="4"></textarea>
+                                </div>
+                                <button type="submit" class="form-submit">Envoyer la réponse</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal pour nouveau sujet -->
+                <div id="newTopicModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal('newTopic')">&times;</span>
+                        <h2 style="margin-bottom: 2rem; color: #667eea;">Créer un nouveau sujet</h2>
+                        <form id="newTopicForm">
+                            <div class="form-group">
+                                <label for="topicTitle">Titre du sujet</label>
+                                <input type="text" id="topicTitle" required maxlength="100">
+                            </div>
+                            <div class="form-group">
+                                <label for="topicContent">Message initial</label>
+                                <textarea id="topicContent" required rows="6"></textarea>
+                            </div>
+                            <button type="submit" class="form-submit">Créer le sujet</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('login')">&times;</span>
+            <h2 style="margin-bottom: 2rem; color: #667eea;">Connexion</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="login-mail">Email</label>
+                    <input type="email" id="login-mail" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Mot de passe</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <div class="error-message" id="loginError"></div>
+                <button type="submit" class="form-submit">Se connecter</button>
+            </form>
+        </div>
     </div>
 
-    <script type="module" src="/src/main.ts"></script>
-  </body>
-  <!-- It should contains all the differents sections like Contact Us, Our Policy, ... -->
-  <footer class="menu">
-  </footer>
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('register')">&times;</span>
+            <h2 style="margin-bottom: 2rem; color: #667eea;">Inscription</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Nom complet</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Mot de passe</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Confirmer le mot de passe</label>
+                    <input type="password" id="registerConfirmPassword" required>
+                </div>
+                <button type="submit" class="form-submit">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+
+
+</body>
 </html>
