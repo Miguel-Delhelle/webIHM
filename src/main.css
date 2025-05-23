@@ -65,7 +65,7 @@
     /*--fte-:; /* expected value -> font-weight, etc... */
     /* --------------------------------[ 'eth' -> ElemenT Height ]-------------------------------- */
     /*--eth-:; /* expected value -> Integer or Float (px, %, rem, ...) */
-    --eth-header: 100px;
+    --eth-header: 0px;
     --eth-footer: 300px;
     /* ---------------------------------[ 'etw' -> ElemenT Width ]-------------------------------- */
     /*--etw-:; /* expected value -> Integer or Float (px, %, rem, ...) */
@@ -113,7 +113,7 @@
     border-bottom-right-radius: 100% 100%;
     cursor: pointer;
     transition: background 0.3s;
-    z-index: 100;
+    z-index: 1002;
   }
   
   #hemisphere-toggle:hover {
@@ -132,6 +132,7 @@
     overflow: visible;
     pointer-events: none;
     transition: transform 0.4s ease, opacity 0.3s ease;
+    z-index: 1001;
   }
   
   #wheel-container.expanded {
@@ -150,25 +151,6 @@
     filter: drop-shadow(0 0 80px hsl(var(--clr-hue) 75% 20%));
   }
   
-.cw-tile:hover {
-    stroke: white;
-    stroke-width: 0.1;
-    filter: drop-shadow(0 0 0.8px black);
-    cursor: pointer;
-    transition: filter 0.1 ease;
-  }
-  
-  .cw-tile.active {
-    stroke: white;
-    stroke-width: 0.2;
-    box-shadow: -1px -1px 8px 10px white;
-  }
-  
-  .cw-label {
-    pointer-events: none; /* Avoid interfering with tile click */
-    user-select: none;
-    text-anchor: middle;
-  }
 
 * {
     margin: 0;
@@ -194,7 +176,7 @@ header {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     position: fixed;
-    top: 0;
+    top: var(--eth-header);
     width: 100%;
     z-index: 1000;
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
