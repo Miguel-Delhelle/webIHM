@@ -1,0 +1,284 @@
+/*
+ * 'clr' -> Color
+ * 'bgc' -> BackGround Color
+ * 'bgi' -> BackGround Image
+ * 'ftc' -> FonT Color
+ * 'fth' -> FonT Height
+ * 'fts' -> FonT Style
+ * 'fte' -> FonT Effect
+ * 'eth' -> ElemenT Height
+ * 'etw' -> ElemenT Width
+ * 'ebc' -> Element Border Color
+ * 'ebr' -> Element Border Radius
+ * 'ebw' -> Element Border Width
+ * 'bsc' -> Box Shadow Color
+ * 'bsh' -> Box Shadow Horizontal offset
+ * 'bsv' -> Box Shadow Vertical offset
+ * 'bsb' -> Box Shadow Blur
+ * 'bss' -> Box Shadow Spread
+ * 'mgg' -> MarGin General
+ * 'mgh' -> MarGin Horizontal
+ * 'mgv' -> MarGin Vertical
+ * 'pdg' -> PadDing General
+ * 'pdh' -> PadDing Horizontal
+ * 'pdv' -> PadDing Vertical
+*/
+:root {
+  /* -------------------------------------[ 'clr' -> Color ]------------------------------------ */
+  /*--clr-:; /* expected value -> ColorName, rgb(), rgba() gradient(), ... */
+  --clr-hue: 300;
+  --clr-sat: 25%;
+  --clr-lum: 95%;
+  --clr-hueComplement: calc(var(--clr-hue) + 180);
+  --clr-hueRightAnalogous: calc(var(--clr-hue) + 30);
+  --clr-hueLeftAnalogous: calc(var(--clr-hue) - 30);
+  --clr-primary: hsl(var(--clr-hue) var(--clr-sat) var(--clr-lum));
+  --clr-primaryDark500: hsl(var(--clr-hue) 20% 85%);
+  --clr-primaryDark600: hsl(var(--clr-hue) 20% 75%);
+  --clr-secondary: hsl(var(--clr-hueComplement) 5% 25%);
+  --clr-secondaryLight500: hsl(var(--clr-hueComplement) 5% 30%);
+  --clr-secondaryLight900: hsl(var(--clr-hueComplement) 5% 95%);
+  --clr-secondaryDark500: hsl(var(--clr-hueComplement) 5% 20%);
+  --clr-accentV1: hsl(var(--clr-hueRightAnalogous) 40% 40%);
+  --clr-accentV1Light900: hsl(var(--clr-hueRightAnalogous) 40% 95%);
+  --clr-accentV2: hsl(var(--clr-hueLeftAnalogous) 40% 40%);
+  --clr-accentV2Light900: hsl(var(--clr-hueLeftAnalogous) 40% 90%);
+  /* -------------------------------[ 'bgc' -> BackGround Color ]------------------------------- */
+  /*--bgc-:; /* expected value -> ColorName, rgb(), rgba() gradient(), ... */
+  --bgc-main: var(--clr-primary);
+  --bgc-menu: var(--clr-secondary);
+  --bgc-container: var(--clr-primaryDark600);
+  --bgc-input: var(--clr-secondaryDark500);
+  /* -------------------------------[ 'bgi' -> BackGround Image ]------------------------------- */
+  /*--bgi-:; /* expected value -> url() */
+  /* ----------------------------------[ 'ftc' -> FonT Color ]---------------------------------- */
+  /*--ftc-:; /* expected value -> ColorName, rgb(), rgba() gradient(), ... */
+  --ftc-main: var(--clr-secondary);
+  --ftc-menu: var(--clr-primary);
+  --ftc-container: var(--clr-secondaryLight900);
+  --ftc-input: var(--clr-primaryDark500);
+  /* ----------------------------------[ 'fth' -> FonT Height ]--------------------------------- */
+  /*--fth-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  /* ----------------------------------[ 'fts' -> FonT Style ]---------------------------------- */
+  /*--fts-:; /* expected value -> font-family or url() */
+  /* ----------------------------------[ 'fte' -> FonT Effect ]--------------------------------- */
+  /*--fte-:; /* expected value -> font-weight, etc... */
+  /* --------------------------------[ 'eth' -> ElemenT Height ]-------------------------------- */
+  /*--eth-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  --eth-header: 100px;
+  --eth-footer: 300px;
+  /* ---------------------------------[ 'etw' -> ElemenT Width ]-------------------------------- */
+  /*--etw-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  /* -----------------------------[ 'ebr' -> Element Border Color ]----------------------------- */
+  /*--ebc-:; /* expected value -> ColorName, rgb(), rgba() gradient(), ... */
+  /* -----------------------------[ 'ebr' -> Element Border Radius ]---------------------------- */
+  /*--ebr-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  /* -----------------------------[ 'ebw' -> Element Border Width ]----------------------------- */
+  /*--ebw-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  /* -------------------------------[ 'bsc' -> Box Shadow Color ]------------------------------- */
+  /*--bsc-:; /* expected value -> ColorName, rgb(), rgba() gradient(), ... */
+  /* -------------------------[ 'bsh' -> Box Shadow Horizontal offset ]------------------------- */
+  /*--bsh-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  /* --------------------------[ 'bsv' -> Box Shadow Vertical offset ]-------------------------- */
+  /*--bsv-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  /* --------------------------------[ 'bsb' -> Box Shadow Blur ]------------------------------- */
+  /*--bsb-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  /* -------------------------------[ 'bss' -> Box Shadow Spread ]------------------------------ */
+  /*--bss-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  /* --------------------------------[ 'mgg' -> MarGin General ]-------------------------------- */
+  /*--mgg-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  /* -------------------------------[ 'mgh' -> MarGin Horizontal ]------------------------------ */
+  /*--mgh-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  /* --------------------------------[ 'mgv' -> MarGin Vertical ]------------------------------- */
+  /*--mgv-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  /* --------------------------------[ 'pdg' -> PadDing General ]------------------------------- */
+  /*--pdg-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  /* -------------------------------[ 'pdh' -> PadDing Horizontal ]----------------------------- */
+  /*--pdh-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+  /* -------------------------------[ 'pdv' -> PadDing Vertical ]------------------------------- */
+  /*--pdv-:; /* expected value -> Integer or Float (px, %, rem, ...) */
+}
+
+  /* -[  ]- */
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+img {
+  aspect-ratio: initial;
+  vertical-align: middle;
+  overflow: hidden;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+header {
+  position: fixed;
+  top: 0px;
+  height: var(--eth-header);
+  width: 100%;
+  align-items: center;
+  display: flex;
+  background-color: var(--clr-secondary);
+  color: var(--clr-primary);
+  z-index: 1000;
+}
+
+body {
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+section {
+  height: 800px;
+  box-shadow: 0px 0px 30px 50px var(--clr-secondaryDark500);
+}
+
+footer {
+  position: relative;
+  bottom: 0px;
+  height: var(--eth-footer);
+  width: 100%;
+  align-items: center;
+  display: flex;
+  background-color: var(--clr-secondary);
+  color: var(--clr-primary);
+  z-index: 1000;
+}
+
+a {
+  color: var(--clr-accentV1);
+}
+a:focus:hover:active {
+  color: var(--clr-accentV2);
+}
+
+#navbar-left {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  height: 90%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Hemisphere toggle */
+#hemisphere-toggle {
+  position: absolute;
+  top: var(--eth-header);
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at center, #555, #222);
+  border-bottom-right-radius: 100% 100%;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 100;
+}
+
+#hemisphere-toggle:hover {
+  background: radial-gradient(circle at center, #777, #444);
+}
+
+/* Color wheel container */
+#wheel-container {
+  position: absolute;
+  top: var(--cw-y);
+  left: var(--cw-x);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  width: 50vw;
+  height: 50vw;
+  overflow: visible;
+  pointer-events: none;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+#wheel-container.expanded {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(2);
+  pointer-events: auto;
+}
+
+/* SVG wheel */
+#wheel-svg {
+  width: 100%;
+  height: 100%;
+}
+
+#color-wheel {
+  filter: drop-shadow(0 0 80px hsl(var(--clr-hue) 75% 20%));
+}
+
+.main {
+  background-color: rgb(23,23,23);
+  color: var(--ftc-main);
+}
+
+.menu {
+  background-color: var(--bgc-menu);
+  color: var(--ftc-menu);
+}
+
+.container {
+  background-color: var(--bgc-container);
+  color: var(--ftc-container);
+}
+
+.input {
+  background-color: var(--bgc-input);
+  color: var(--ftc-input);
+}
+
+.button {
+  padding: 10px;
+  margin: 3px;
+  background-color: var(--clr-primaryDark600);
+}
+
+.hover:hover {
+  background-color: var(--clr-accentV1);
+}
+
+.round {
+  border-radius: 5px;
+}
+
+.shadow-down {
+  box-shadow: 0px 5px 10px 5px var(--clr-accentV1);
+}
+.modal {
+  z-index: 1000;
+  width: 400px ;
+  height: 600px;
+  visibility: hidden;
+}
+
+.cw-tile:hover {
+  stroke: white;
+  stroke-width: 0.1;
+  filter: drop-shadow(0 0 0.8px black);
+  cursor: pointer;
+  transition: filter 0.1 ease;
+}
+
+.cw-tile.active {
+  stroke: white;
+  stroke-width: 0.2;
+  box-shadow: -1px -1px 8px 10px white;
+}
+
+.cw-label {
+  pointer-events: none; /* Avoid interfering with tile click */
+  user-select: none;
+  text-anchor: middle;
+}

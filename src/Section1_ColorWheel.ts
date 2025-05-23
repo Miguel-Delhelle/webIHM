@@ -2,10 +2,11 @@ import { Point } from "./Point";
 
 var cssRoot = document.querySelector(':root') as HTMLElement;
 
+//@ts-ignore
 function getCSSproperty(propertyName: string): string {
   var rs = getComputedStyle(cssRoot);
   return rs.getPropertyValue(propertyName);
-}
+} 
 
 function setCSSProperty(propertyName: string, value: string): void {
   cssRoot.style.setProperty(propertyName, value);
@@ -22,7 +23,7 @@ interface CopicColor {
   family: string
 };
 export var COPICCOLOR_FAMILIES: {[k: string]: CopicColor[]} = {};
-export var maxColorSegment: number = await initCopicColors();
+export var maxColorSegment:number = await initCopicColors();
 console.log(COPICCOLOR_FAMILIES);
 interface RGBcolor {R: number, G: number, B: number};
 interface HSLcolor {H: number, S: number, L: number};
@@ -216,6 +217,7 @@ export async function drawCopicColorWheel(
   if(!svg) return;
   const maxRadius: number = cwRadius+cwTileWidth*cwTilenumber;
   const cwCenterPt: Point = new Point();
+  console.log(cwCenterPt,cwRadius,cwTileWidth,cwTilenumber,maxRadius);
   svg.setAttribute("viewBox", `${cwCenterPt._x-maxRadius} ${cwCenterPt._y-maxRadius} ${maxRadius*2} ${maxRadius*2}`);
   svg.innerHTML = '';
   const cw: SVGElement = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -235,8 +237,8 @@ export async function drawCopicColorWheel(
   });
 
   toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
     toggleColorWheel();
+    e.stopPropagation();
   });
   
   function startDrag(e: MouseEvent): void {

@@ -1,3 +1,28 @@
+/*
+ * 'clr' -> Color
+ * 'bgc' -> BackGround Color
+ * 'bgi' -> BackGround Image
+ * 'ftc' -> FonT Color
+ * 'fth' -> FonT Height
+ * 'fts' -> FonT Style
+ * 'fte' -> FonT Effect
+ * 'eth' -> ElemenT Height
+ * 'etw' -> ElemenT Width
+ * 'ebc' -> Element Border Color
+ * 'ebr' -> Element Border Radius
+ * 'ebw' -> Element Border Width
+ * 'bsc' -> Box Shadow Color
+ * 'bsh' -> Box Shadow Horizontal offset
+ * 'bsv' -> Box Shadow Vertical offset
+ * 'bsb' -> Box Shadow Blur
+ * 'bss' -> Box Shadow Spread
+ * 'mgg' -> MarGin General
+ * 'mgh' -> MarGin Horizontal
+ * 'mgv' -> MarGin Vertical
+ * 'pdg' -> PadDing General
+ * 'pdh' -> PadDing Horizontal
+ * 'pdv' -> PadDing Vertical
+*/
 :root {
     /* -------------------------------------[ 'clr' -> Color ]------------------------------------ */
     /*--clr-:; /* expected value -> ColorName, rgb(), rgba() gradient(), ... */
@@ -74,8 +99,10 @@
     /*--pdv-:; /* expected value -> Integer or Float (px, %, rem, ...) */
   }
   
+    /* -[  ]- */
 
-/* -[ Hemisphere Toggle ]- */
+    
+/* Hemisphere toggle */
 #hemisphere-toggle {
     position: absolute;
     top: var(--eth-header);
@@ -93,7 +120,7 @@
     background: radial-gradient(circle at center, #777, #444);
   }
   
-  /* -[ Color Wheel ]- */
+  /* Color wheel container */
   #wheel-container {
     position: absolute;
     top: var(--cw-y);
@@ -113,6 +140,7 @@
     pointer-events: auto;
   }
   
+  /* SVG wheel */
   #wheel-svg {
     width: 100%;
     height: 100%;
@@ -122,12 +150,12 @@
     filter: drop-shadow(0 0 80px hsl(var(--clr-hue) 75% 20%));
   }
   
-  .cw-tile:hover {
+.cw-tile:hover {
     stroke: white;
     stroke-width: 0.1;
     filter: drop-shadow(0 0 0.8px black);
     cursor: pointer;
-    transition: filter 0.1s ease;
+    transition: filter 0.1 ease;
   }
   
   .cw-tile.active {
@@ -141,21 +169,6 @@
     user-select: none;
     text-anchor: middle;
   }
-
-  /* -[ Animations ]- */
-@keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-}
-  
-
-
 
 * {
     margin: 0;
